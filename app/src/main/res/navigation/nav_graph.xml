@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/titleFragment">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="raum.muchbeer.viewmodellivedataktx.fragment.TitleFragment"
+        android:label="TitleFragment"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/titleFrag_to_gameFrag"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="raum.muchbeer.viewmodellivedataktx.fragment.GameFragment"
+        android:label="GameFragment"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/gameFrag_to_ScoreFrag"
+            app:destination="@id/scoreFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/title_destination"/>
+
+        <argument
+            android:name="score"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="raum.muchbeer.viewmodellivedataktx.fragment.ScoreFragment"
+        android:label="ScoreFragment"
+        tools:layout="@layout/score_fragment">
+        <action
+            android:id="@+id/scoreFrag_to_gameFrag"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/title_destination"/>
+        <argument
+            android:name="score"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+    </fragment>
+</navigation>
